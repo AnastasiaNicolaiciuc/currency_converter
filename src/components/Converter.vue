@@ -16,7 +16,6 @@
         @input="changeFirstRate()"
       />
       <select v-model="firstRate.currency" @change="changeFirstRate()">
-        <option value="">Select currency</option>
         <option
           :key="index"
           :value="JSON.stringify(currency)"
@@ -33,7 +32,6 @@
         @input="changeSecondRate()"
       />
       <select v-model="secondRate.currency" @change="changeSecondRate()">
-        <option value="">Select currency</option>
         <option
           :key="index"
           :value="JSON.stringify(currency)"
@@ -96,6 +94,12 @@ export default {
 
       return this.currencies;
     },
+  },
+
+  mounted() {
+    this.firstRate.currency = JSON.stringify(this.currencies[0]);
+    this.secondRate.currency = JSON.stringify(this.currencies[1]);
+
   },
 
   methods: {
